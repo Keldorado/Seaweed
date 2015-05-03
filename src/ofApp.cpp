@@ -3,23 +3,23 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    movement = 1;
-    movement2 = 1;
+    movement = 1; //sets the inital value for our movement
+    movement2 = 1; //sets the inital value for our movement
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
-    float tipX2 = (300*(cos(movement+=.01)))+400;
-    float tipX = (200*(cos(movement2+=.005)));
+    float tipX2 = (300*(cos(movement+=.01)))+400; //Defines the nature of of the second x position
+    float tipX = (200*(cos(movement2+=.005))); //Defines the nature of of the first x position
     
-    polyline.curveTo(tipX+tipX2,0);
-    polyline.curveTo(tipX+tipX2,0);
-    polyline.curveTo(tipX2,200);
-    polyline.curveTo(400,400);
-    polyline.curveTo(400,800);
-    polyline.curveTo(400,800);
+    polyline.curveTo(tipX+tipX2,0);//Need this code twice in order to set ancor point
+    polyline.curveTo(tipX+tipX2,0); // defines location of this curve
+    polyline.curveTo(tipX2,200); // defines location of this curve
+    polyline.curveTo(400,400); // defines location of this curve
+    polyline.curveTo(400,800); // defines location of this curve
+    polyline.curveTo(400,800); //Need this code twice in order to set ancor point
     
     
   
@@ -29,61 +29,15 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    float numPoints = polyline.size();
-    float normalLength = 50;
-    for (int p=0; p<100; p+=1) {
-        ofVec3f point = polyline.getPointAtPercent(p/100.0);
-        float floatIndex = p/100.0 * (numPoints-1);
-        ofVec3f normal = polyline.getNormalAtIndexInterpolated(floatIndex) * normalLength;
-        ofLine(point-normal/2, point+normal/2);
+    float numPoints = polyline.size();//The number of points on the line
+    float normalLength = 50; // The length of the normals
+    for (int p=0; p<100; p+=1) { //Start of the for loop
+        ofVec3f point = polyline.getPointAtPercent(p/100.0); //Puts the lines throughout 100% of the
+        ofVec3f normal = polyline.getNormalAtIndexInterpolated(numPoints) * normalLength; // NO IDEA??? - Defines nature of the polylines?
+        ofLine(point-normal/2, point+normal/2); //Defines where the normals go on the polyline
         
         
     }
-    polyline.draw();
-    polyline.clear();
-}
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
+    polyline.draw(); // Draws the polyline
+    polyline.clear(); //Clears the polyline
 }
