@@ -33,7 +33,7 @@ void ofApp::draw(){
     float normalLength = 50; // The length of the normals
     for (int p=0; p<100; p+=1) { //Start of the for loop
         ofVec3f point = polyline.getPointAtPercent(p/100.0); //Puts the lines throughout 100% of the
-        ofVec3f normal = polyline.getNormalAtIndexInterpolated(numPoints) * normalLength; // NO IDEA??? - Defines nature of the polylines?
+        ofVec3f normal = polyline.getNormalAtIndexInterpolated(numPoints) * normalLength; //Defines nature of the polylines
         ofLine(point-normal/2, point+normal/2); //Defines where the normals go on the polyline
         
         
